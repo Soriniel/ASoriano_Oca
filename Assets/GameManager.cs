@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         infoCasillas[5] = 1;
 
         // volver a tirar
-        infoCasillas[11] = 2;
+        infoCasillas[12] = 2;
         infoCasillas[17] = 2;
 
         // retroceder 3 casillas
