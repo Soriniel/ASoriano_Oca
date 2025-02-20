@@ -5,6 +5,7 @@ using UnityEngine;
 public class Casilla : MonoBehaviour
 {
     public int numeroCasilla;
+    public GameManager gameManager;
 
     void Awake()
     {

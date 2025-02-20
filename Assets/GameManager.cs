@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int[] vectorCasillas;
     public int[] infoCasillas;
     public GameObject[] vectorObjetos;
 
+
+    public TextMeshProUGUI textoTurno;
+    public TextMeshProUGUI textoDado;
+    public Button botonTirarDado; // Botón de la UI para tirar el dado
+
+    private int turnoActual = 0; // 0 = Jugador, 1 = IA
+    private bool esperandoDecision = false;
+
     private void Awake()
     {
 
         vectorCasillas = new int[21];
-        infoCasillas   = new int[21];
+        infoCasillas = new int[21];
 
         // RELLENAMOS EL VECTOR DE CASILLAS
         for (int i = 0; i < vectorCasillas.Length; i++)
@@ -56,20 +66,47 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < vectorGOCasillas.Length; i++)
         {
             GameObject casilla = vectorGOCasillas[i];
-            // falta terminar ..
 
+            // Suponemos que el nombre tiene el formato "casillaX"
+            // Extraemos la parte numérica del nombre. Ajusta el índice si tu prefijo cambia.
+            string casillaString = casilla.name.Substring(7); // "casilla" tiene 7 caracteres
+            if (int.TryParse(casillaString, out int numeroCasilla))
+            {
+                // Si el número está dentro del rango, lo asignamos en esa posición del vector
+                if (numeroCasilla >= 0 && numeroCasilla < vectorObjetos.Length)
+                {
+                    vectorObjetos[numeroCasilla] = casilla;
+                }
+
+            }
+        }
+    }
+}
+/*
+    public void Start()
+    {
+        IniciarTurno();
+    }
+
+    public void IniciarTurno()
+    {
+
+        if (turnoActual == 0)
+        {
+            StartCoroutine(TurnoJugador());
+        }
+        else
+        {
+            StartCoroutine(TurnoIA());
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    IEnumerator TurnoJugador()
     {
-        
+        Debug.Log("Turno jugador!");
     }
-
-    // Update is called once per frame
-    void Update()
+    IEnumerator TurnoIA()
     {
-        
+        Debug.Log("Turno IA!");
     }
-}
+}*/
