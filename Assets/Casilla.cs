@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Casilla : MonoBehaviour
@@ -9,7 +8,7 @@ public class Casilla : MonoBehaviour
 
     void Awake()
     {
-        int.TryParse(Regex.Match(gameObject.name, "\\d+").Value, out numeroCasilla);
+        string casillaString = this.gameObject.name.Substring(7);
+        numeroCasilla = int.Parse(casillaString);
     }
-
 }

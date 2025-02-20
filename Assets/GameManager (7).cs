@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
-    int[] vectorCasillas;
-    int[] infoCasillas;
-    GameObject[] vectorObjetos;
+    public int[] vectorCasillas;
+    public int[] infoCasillas;
+    public GameObject[] vectorObjetos;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         infoCasillas[5] = 1;
 
         // volver a tirar
-        infoCasillas[12] = 2;
+        infoCasillas[11] = 2;
         infoCasillas[17] = 2;
 
         // retroceder 3 casillas
@@ -40,19 +40,15 @@ public class GameManager : MonoBehaviour
         infoCasillas[20] = 99;
 
         // RELLENAMOS EL VECTOR DE GAMEOBJECTS
-        //vectorObjetos = GameObject.FindGameObjectsWithTag("casilla");
-
-        // METODO 1: OBTENER LOS HIJOS DE UN PARENT VACÍO
+        vectorObjetos = GameObject.FindGameObjectsWithTag("casilla");
 
         // METODO 2: RELLENAR CON UN FOR Y UN FIND
         vectorObjetos = new GameObject[21];
 
         for (int i = 0; i < vectorObjetos.Length; i++)
+        {
             vectorObjetos[i] = GameObject.Find("casilla" + i);
-
-
-        // METODO 3: ORDENAR LA LISTA A PARTIR DE LA LISTA DE TAGS
-        // LA MAS COMPLICADA PERO LA MAS EFICIENTE
+        }
 
         // 21 CASILLAS DESORDENADAS
         GameObject[] vectorGOCasillas = GameObject.FindGameObjectsWithTag("casilla");
